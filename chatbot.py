@@ -3,7 +3,6 @@ import streamlit as st
 from langchain_groq import ChatGroq
 import os
 load_dotenv()
-API_KEY=os.getenv("GROQ_API_KEY")
 #Streamlit_page_setup
 st.set_page_config(
     page_title="ChatBot",
@@ -20,11 +19,9 @@ for message in st.session_state.chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-llm=ChatGroq(
-    api_key=API_KEY,
-    model="llama-3.1-8b-instant",
+llm = ChatGroq(
+    model="llama-3.3-70b-versatile",
     temperature=0.0,
-
 )
 
 user_prompt=st.chat_input("Ask Chatbot...")
